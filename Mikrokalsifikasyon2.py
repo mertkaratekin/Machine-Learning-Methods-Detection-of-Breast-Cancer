@@ -30,7 +30,7 @@ x_cls = veri
 
 # Veri Setinin Bölünmesi
 x_train_cls, x_test_cls, y_train_cls, y_test_cls = train_test_split(
-    x_cls, y_cls, train_size=0.4, random_state=46
+    x_cls, y_cls, train_size=0.7, random_state=46
 )
 
 # Verilerin Normalizasyonu (Siniflandirma için)
@@ -75,24 +75,24 @@ def perform_classification(selected_models):
 
         # Grafik Oluşturma
         plt.figure(figsize=(10, 6))
-        plt.scatter(x_test_cls.iloc[:, 0], y_test_cls, c='blue', label='Gerçek Değerler', alpha=0.6)
-        plt.scatter(x_test_cls.iloc[:, 0], tahminler, c='red', marker='x', label='Tahmin Edilen Değerler', alpha=0.6)
-        plt.title(f"{model.__class__.__name__} Sınıflandırma Tahminleri\nDoğruluk: {accuracy:.2f}%")
+        plt.scatter(x_test_cls.iloc[:, 0], y_test_cls, c='blue', label='Real Values', alpha=0.6)
+        plt.scatter(x_test_cls.iloc[:, 0], tahminler, c='red', marker='x', label='Prediction Values', alpha=0.6)
+        plt.title(f"{model.__class__.__name__} Classification Predictions\nAccuracy: {accuracy:.2f}%")
         plt.xlabel(x_cls.columns[0])  # İstediğiniz sütunu x eksenine yerleştirin
-        plt.ylabel("Değerler")
+        plt.ylabel("Values")
         plt.legend()
         plt.show()
 
 # Arayüz Oluşturma
 root = Tk()
-root.title("Sınıflandırma Arayüzü")
+root.title("Classification Interface")
 
 # Pencere boyutunu ve yazı tipi boyutunu ayarla
 root.geometry("800x700")
 root.config(bg="#1E1E1E")  # Arka plan rengini değiştirdik
 
 # Başlık alanı oluştur
-title_label = Label(root, text="ALGORİTMALAR", font=("Arial", 24, "bold"), bg="#1E1E1E", fg="#04F943")  # Başlığın arka plan rengini ayarladık
+title_label = Label(root, text="ALGORITHMS", font=("Arial", 24, "bold"), bg="#1E1E1E", fg="#04F943")  # Başlığın arka plan rengini ayarladık
 title_label.pack(pady=20)
 
 # Çerçeve oluştur
@@ -109,10 +109,10 @@ for i, model in enumerate(modeller):
     j = (j + 1) % len(color_list)
 
 # Sınıflandırma ve çıkış butonları
-classify_button = Button(root, text="SINIFLANDIR", command=classify, font=("Arial", 16, "bold"), bg="#04F943", fg="black", bd=0, padx=20, pady=10, relief="flat")
+classify_button = Button(root, text="CLASSIFY", command=classify, font=("Arial", 16, "bold"), bg="#04F943", fg="black", bd=0, padx=20, pady=10, relief="flat")
 classify_button.pack(pady=20)
 
-close_button = Button(root, text="ÇIKIŞ", command=close_program, font=("Arial", 16, "bold"), bg="#FF0000", fg="black", bd=0, padx=20, pady=10, relief="flat")
+close_button = Button(root, text="EXIT", command=close_program, font=("Arial", 16, "bold"), bg="#FF0000", fg="black", bd=0, padx=20, pady=10, relief="flat")
 close_button.pack()
 
 root.mainloop()

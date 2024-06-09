@@ -68,8 +68,8 @@ for i, model in enumerate(modeller):
     tahminler = model.predict(x_test_cls_scaled)
     
     # Tahminlerin Gösterilmesi
-    print(f"\n{model.__class__.__name__} Tahminleri ve Gerçek Değerler:")
-    tahmin_df = pd.DataFrame({"Gerçek Değer": y_test_cls, "Tahmin": tahminler})
+    print(f"\n{model.__class__.__name__} Predictions and Real Values:")
+    tahmin_df = pd.DataFrame({"Real Values": y_test_cls, "Prediction": tahminler})
     print(tahmin_df.to_string())
     
     # Doğruluk Yüzdesi Hesaplanması
@@ -80,10 +80,10 @@ for i, model in enumerate(modeller):
     # Grafik Oluşturma
     plt.figure(figsize=(10, 6))
     plt.scatter(x_test_cls.iloc[:, 0], tahminler, c=y_test_cls, cmap='coolwarm', alpha=0.7)
-    plt.title(f"{model.__class__.__name__} Sınıflandırma Tahminleri (Doğruluk: {accuracy_percentage}%)")
+    plt.title(f"{model.__class__.__name__} Classification Predictions (Accuracy: {accuracy_percentage}%)")
     plt.xlabel(x_cls.columns[0])  # İstediğiniz sütunu x eksenine yerleştirin
-    plt.ylabel("Tahmin Edilen Değerler")
-    plt.colorbar(label='Gerçek Sınıf')
+    plt.ylabel("Forecast Values")
+    plt.colorbar(label='Real Class')
     plt.show()
 
 

@@ -81,11 +81,11 @@ def perform_classification(selected_models):
 
         # Grafik Oluşturma
         plt.figure(figsize=(10, 6))
-        plt.scatter(x_test_cls.iloc[:, 0], y_test_cls, c='blue', label='Gerçek Değerler', alpha=0.6)
-        plt.scatter(x_test_cls.iloc[:, 0], tahminler, c='red', marker='x', label='Tahmin Edilen Değerler', alpha=0.6)
-        plt.title(f"{model.__class__.__name__} Sınıflandırma Tahminleri\nDoğruluk: {accuracy:.2f}%")
+        plt.scatter(x_test_cls.iloc[:, 0], y_test_cls, c='blue', label='Real Values', alpha=0.6)
+        plt.scatter(x_test_cls.iloc[:, 0], tahminler, c='red', marker='x', label='Prediction Values', alpha=0.6)
+        plt.title(f"{model.__class__.__name__} Classification Predictions\nAccuracy: {accuracy:.2f}%")
         plt.xlabel(x_cls.columns[0])  # İstediğiniz sütunu x eksenine yerleştirin
-        plt.ylabel("Değerler")
+        plt.ylabel("Values")
         plt.legend()
         plt.show()
 
